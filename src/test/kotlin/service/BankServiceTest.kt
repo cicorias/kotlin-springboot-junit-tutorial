@@ -5,7 +5,6 @@ import com.cicoria.kotlintutorial.thenewboston.service.BankService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 internal class BankServiceTest {
@@ -19,7 +18,7 @@ internal class BankServiceTest {
         every { dataSource.retrieveBanks() } returns emptyList()// -- replaced by "relaxed" on mock above.
 
         // when
-        bankService.getBanks()
+        val rv = bankService.getBanks()
 
         // then
         verify(exactly = 1) { dataSource.retrieveBanks()}
